@@ -20,47 +20,16 @@ let frames: [FrameData] = [
 class ViewController: UIViewController {
     @IBOutlet weak var container: UIView!
     
-    var currentFrame = AnimationFrame.create(data: frames[0])
-    var nextFrame: AnimationFrame!
-    var index = 0
-    
+    var sequence: TransitionSequnece!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.container.addSubview(self.currentFrame)
+        self.sequence = FrameTransitionSequence(container: self.container, frameView: AnimationFrameView(), frames: frames)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.run()
+        self.sequence.start() { finished in
+            print("Sequnece finished: \(finished)")
         }
-        
-    }
-        
-    func run() {
-        self.index += 1
-        if (self.index < frames.count) {
-            self.nextFrame = AnimationFrame.create(data: frames[self.index])
-            self.animate() { finished in
-                self.currentFrame = self.nextFrame
-                self.run()
-            }
-        }
-    }
-
-    func animate(completion: @escaping (Bool) -> Void) {
-        
-        
-        // create a 'tuple' (a pair or more of objects assigned to a single variable)
-        let views = (frontView: currentFrame, backView: nextFrame)
-        
-        UIView.transition(with: self.container, duration: 1.0, options: [ .transitionCurlUp ], animations: {
-            // remove the front object...
-            views.frontView.removeFromSuperview()
-            
-            // ... and add the other object
-            self.container.addSubview(views.backView)
-            
-        }, completion: completion)
     }
 }
 

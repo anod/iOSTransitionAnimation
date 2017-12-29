@@ -8,9 +8,15 @@
 
 import UIKit
 
-struct FrameData {
+struct FrameData: Frame {
     let pic: UIImage
     let title: String
+}
+
+struct AnimationFrameView: FrameView {
+    func create(frame: Frame) -> UIView {
+        return AnimationFrame.create(data: frame as! FrameData)
+    }
 }
 
 class AnimationFrame: UIView {

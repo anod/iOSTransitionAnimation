@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		986DB2D51FF6313400F35E3F /* TransitionSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 986DB2D41FF6313400F35E3F /* TransitionSequence.swift */; };
 		98DA105E1FF5587F002797B9 /* AnimationFrame.xib in Resources */ = {isa = PBXBuildFile; fileRef = 98DA105D1FF5587F002797B9 /* AnimationFrame.xib */; };
 		98DA10601FF55A54002797B9 /* AnimationFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98DA105F1FF55A54002797B9 /* AnimationFrame.swift */; };
 		98EA0B921FF14C2500A553C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98EA0B911FF14C2500A553C7 /* AppDelegate.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		986DB2D41FF6313400F35E3F /* TransitionSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionSequence.swift; sourceTree = "<group>"; };
 		98DA105D1FF5587F002797B9 /* AnimationFrame.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimationFrame.xib; sourceTree = "<group>"; };
 		98DA105F1FF55A54002797B9 /* AnimationFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationFrame.swift; sourceTree = "<group>"; };
 		98EA0B8E1FF14C2500A553C7 /* Animation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +68,7 @@
 				98EA0B9D1FF14C2500A553C7 /* Info.plist */,
 				98DA105D1FF5587F002797B9 /* AnimationFrame.xib */,
 				98DA105F1FF55A54002797B9 /* AnimationFrame.swift */,
+				986DB2D41FF6313400F35E3F /* TransitionSequence.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				98EA0B941FF14C2500A553C7 /* ViewController.swift in Sources */,
 				98DA10601FF55A54002797B9 /* AnimationFrame.swift in Sources */,
 				98EA0B921FF14C2500A553C7 /* AppDelegate.swift in Sources */,
+				986DB2D51FF6313400F35E3F /* TransitionSequence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

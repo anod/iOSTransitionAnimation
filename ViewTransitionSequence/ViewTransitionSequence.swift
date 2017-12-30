@@ -17,6 +17,12 @@ public protocol TransitionFrameView {
     func create(frame: TransitionFrame) -> UIView
 }
 
+public protocol TransitionSequneceOptions {
+    // Options to pass to UIView.transition, default [ .transitionCurlUp ]
+    var transition: UIViewAnimationOptions { get set }
+    var frameDuration: TimeInterval { get set }
+}
+
 public protocol TransitionSequnece {
     // Container where animation will be performed
     weak var container: UIView? { get }
@@ -26,18 +32,22 @@ public protocol TransitionSequnece {
     // Frames infromation
     var frames: [TransitionFrame] { get }
     
-    // Options to pass to UIView.transition, default [ .transitionCurlUp ]
-    var transitionOptions: UIViewAnimationOptions { get set }
+    var options: TransitionSequneceOptions { get set }
     
     // Start animate transion inside container with frames rendered in frame view
     func start(completion: ((_ finished: Bool) -> Void)?)
     func stop()
 }
 
+struct DefaultTransitionSequneceOptions: TransitionSequneceOptions {
+    var transition: UIViewAnimationOptions = [ .transitionCurlUp ]
+    var frameDuration = 1.0
+}
+
 public class ViewTransitionSequence: TransitionSequnece {
     public weak var container: UIView?
     
-    public var transitionOptions: UIViewAnimationOptions = [ .transitionCurlUp ]
+    public var options: TransitionSequneceOptions = DefaultTransitionSequneceOptions()
     
     public let frameView: TransitionFrameView
     public let frames: [TransitionFrame]
@@ -101,7 +111,7 @@ public class ViewTransitionSequence: TransitionSequnece {
             return
         }
         
-        UIView.transition(with: container, duration: 1.0, options: self.transitionOptions, animations: {
+        UIView.transition(with: container, duration: self.options.frameDuration, options: self.options.transition, animations: {
             self.currentFrame?.removeFromSuperview()
             
             if let backView = self.nextFrame {

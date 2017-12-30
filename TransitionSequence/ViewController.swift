@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViewTransitionSequence
 
 let frames: [FrameData] = [
     FrameData(pic: UIImage(named: "face-1")!, title: "Best beard"),
@@ -25,10 +26,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.sequence = FrameTransitionSequence(container: self.container, frameView: AnimationFrameView(), frames: frames)
-        
+        self.sequence = ViewTransitionSequence(container: self.container, frameView: AnimationFrameView(), frames: frames)
         self.sequence.start() { finished in
-            print("Sequnece finished: \(finished)")
+            print("Sequence finished \(finished)")
         }
     }
 }

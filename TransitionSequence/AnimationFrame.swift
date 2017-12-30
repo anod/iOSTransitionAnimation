@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import ViewTransitionSequence
 
-struct FrameData: Frame {
+struct FrameData: TransitionFrame {
     let pic: UIImage
     let title: String
 }
 
-struct AnimationFrameView: FrameView {
-    func create(frame: Frame) -> UIView {
+struct AnimationFrameView: TransitionFrameView {
+    func create(frame: TransitionFrame) -> UIView {
         return AnimationFrame.create(data: frame as! FrameData)
     }
 }

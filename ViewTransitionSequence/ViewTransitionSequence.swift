@@ -1,6 +1,5 @@
 //
-//  TransitionSequence.swift
-//  Animation
+//  ViewTransitionSequence.swift
 //
 //  Created by Alexandr Gavrishev on 29/12/2017.
 //  Copyright © 2017 Anodsplace. All rights reserved.
@@ -9,23 +8,23 @@
 import UIKit
 
 // Fram infromation
-protocol Frame {
+public protocol TransitionFrame {
     
 }
 
 // Factory for a view which will be filled with Frame information
-protocol FrameView {
-    func create(frame: Frame) -> UIView
+public protocol TransitionFrameView {
+    func create(frame: TransitionFrame) -> UIView
 }
 
-protocol TransitionSequnece {
+public protocol TransitionSequnece {
     // Container where animation will be performed
     weak var container: UIView? { get }
     
     // Frame view factory
-    var frameView: FrameView { get }
+    var frameView: TransitionFrameView { get }
     // Frames infromation
-    var frames: [Frame] { get }
+    var frames: [TransitionFrame] { get }
     
     // Options to pass to UIView.transition, default [ .transitionCurlUp ]
     var transitionOptions: UIViewAnimationOptions { get set }
@@ -35,26 +34,26 @@ protocol TransitionSequnece {
     func stop()
 }
 
-class FrameTransitionSequence: TransitionSequnece {
-    weak var container: UIView?
+public class ViewTransitionSequence: TransitionSequnece {
+    public weak var container: UIView?
     
-    var transitionOptions: UIViewAnimationOptions = [ .transitionCurlUp ]
+    public var transitionOptions: UIViewAnimationOptions = [ .transitionCurlUp ]
     
-    let frameView: FrameView
-    let frames: [Frame]
+    public let frameView: TransitionFrameView
+    public let frames: [TransitionFrame]
     
     private var index = 0
     private var currentFrame: UIView?
     private var nextFrame: UIView?
     private var running = true
     
-    init(container: UIView, frameView: FrameView, frames: [Frame]) {
+    public init(container: UIView, frameView: TransitionFrameView, frames: [TransitionFrame]) {
         self.container = container
         self.frameView = frameView
         self.frames = frames
     }
     
-    func start(completion: ((Bool) -> Void)?) {
+    public func start(completion: ((Bool) -> Void)?) {
         assert(self.frames.count > 0)
         if (self.frames.count == 0) {
             completion?(true)
@@ -74,7 +73,7 @@ class FrameTransitionSequence: TransitionSequnece {
         self.runSequence(completion: completion)
     }
     
-    func stop() {
+    public func stop() {
         self.running = false
     }
     

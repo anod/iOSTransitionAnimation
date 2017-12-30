@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Animation.xcodeproj">
+      location = "self:/Users/algavris/dev/SwiftAnimation/Animation/TransitionSequence.xcodeproj">
    </FileRef>
 </Workspace>

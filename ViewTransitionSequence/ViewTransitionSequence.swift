@@ -20,6 +20,7 @@ public protocol TransitionFrameView {
 public protocol TransitionSequneceOptions {
     // Options to pass to UIView.transition, default [ .transitionCurlUp ]
     var transition: UIViewAnimationOptions { get set }
+    // Default 1.0
     var frameDuration: TimeInterval { get set }
 }
 

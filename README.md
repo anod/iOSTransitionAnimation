@@ -32,7 +32,7 @@ public protocol TransitionSequneceOptions {
 }
 ```
  
-## Instaltion
+## Installation
 ### Carthage
 ```Cartfile
 github "anod/iOSTransitionAnimation" >= 0.1
